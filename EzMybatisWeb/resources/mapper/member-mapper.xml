@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+	<resultMap type="com.EZ.member.vo.Member" id="memberResultMap">
+	<!-- 이게 rsetoMember 대체 -->
+	<id property="memberId" column="MEMBER_ID"/>
+	<result property="memberPw" column="MEMBER_PW"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+	<result property="gender" column="GENDER"/>
+	<result property="age" column="AGE"/>
+	<result property="email" column="MEMBER_EMAIL"/>
+	<result property="phone" column="MEMBER_PHONE"/>
+	<result property="address" column="MEMBER_ADDRESS"/>
+	<result property="hobby" column="MEMBER_HOBBY"/>
+	<result property="regdate" column="REG_DATE"/>
+	</resultMap> <!-- ID값과 COLUMN 값이 같으면 생략해도됨 -->
+	<insert id="insertMember">
+		insert into member_tbl
+		values(#{memberId},#{memberPw},#{memberName},#{gender},#{age},#{email},#{phone},#{address},#{hobby},DEFAULT)
+		<!-- #{} 는 get 메소드 없이 해당 필드 값 불러오는거 -->
+	</insert>
+	<select id="checkLogin" resultMap="memberResultMap">
+	SELECT * FROM MEMBER_TBL WHERE MEMBER_ID=#{memberId} AND MEMBER_PW=#{memberPw}
+	</select>
+	<select id="selectOneById" resultMap="memberResultMap">
+	select * from member_tbl where member_id=#{memberId}
+	</select>
+	<delete id="deleteMember">
+	delete from member_Tbl where member_id=#{memberId}
+	</delete>
+	<update id="updateMember">
+	UPDATE MEMBER_TBL SET MEMBER_EMAIL=#{email},MEMBER_PHONE=#{phone}, MEMBER_ADDRESS=#{address}, MEMBER_HOBBY=#{hobby}
+	WHERE MEMBER_ID=#{memberId}
+	</update>
+</mapper>
