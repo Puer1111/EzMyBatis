@@ -55,7 +55,7 @@ public class InsertServlet extends HttpServlet {
 			int result = nService.insertNotice(notice);
 			if (result > 0) {
 //				request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
-			response.sendRedirect("/");
+			response.sendRedirect("/notice/list.kh");
 			
 			} else {
 				request.setAttribute("msg", "등록되지 않았습니다");

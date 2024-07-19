@@ -2,20 +2,32 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="NoticeMapper">
-  <resultMap type="com.EZ.notice.vo.Notice" id="NoticeResult">
-  <id property = "noticeNo" column="NOTICE_NO"/>
-  <result property = "noticeSubject" column="NOTICE_SUBJECT"/>
-  <result property = "noticeContent" column="NOTICE_CONTENT"/>
-  <result property = "noticeWriter" column="NOTICE_WRITER"/>
-  <result property = "regDate" column="REG_DATE"/>
-  <result property = "updateDate" column="UPDATE_DATE"/>
-  <result property = "viewCount" column="VIEW_COUNT"/>
-  </resultMap>
-  <insert id="insertNotice">
-	INSERT INTO NOTICE_TBL VALUES(SEQ_NOTICE_NO.NEXTVAL,#{noticeSubject},#{noticeContent},#{noticeWriter},DEFAULT,DEFAULT,DEFAULT)	
-  </insert>
-  <select id="selectList" resultMap="NoticeResult">
-  SELECT * FROM NOTICE_TBL
-  </select>
-  </mapper>
+<mapper namespace="NoticeMapper">
+	<resultMap type="com.EZ.notice.vo.Notice" id="NoticeResult">
+		<id property="noticeNo" column="NOTICE_NO" />
+		<result property="noticeSubject" column="NOTICE_SUBJECT" />
+		<result property="noticeContent" column="NOTICE_CONTENT" />
+		<result property="noticeWriter" column="NOTICE_WRITER" />
+		<result property="regDate" column="REG_DATE" />
+		<result property="updateDate" column="UPDATE_DATE" />
+		<result property="viewCount" column="VIEW_COUNT" />
+	</resultMap>
+	<insert id="insertNotice">
+		INSERT INTO NOTICE_TBL
+		VALUES(SEQ_NOTICE_NO.NEXTVAL,#{noticeSubject},#{noticeContent},#{noticeWriter},DEFAULT,DEFAULT,DEFAULT)
+	</insert>
+	<select id="selectList" resultMap="NoticeResult">
+		SELECT * FROM NOTICE_TBL
+	</select>
+	<select id="selectOne" resultMap="NoticeResult">
+		SELECT * FROM NOTICE_TBL WHERE NOTICE_NO=#{noticeNo}
+	</select>
+	<update id="UpdateNotice">
+		UPDATE NOTICE_TBL SET NOTICE_SUBJECT=#{noticeSubject},
+		NOTICE_CONTENT=#{noticeContent}
+		,UPDATE_DATE=DEFAULT where NOTICE_NO=#{noticeNo}
+	</update>
+	<delete id="deleteNotice">
+		DELETE FROM NOTICE_TBL WHERE NOTICE_NO=#{noticeNo}
+	</delete>
+</mapper>

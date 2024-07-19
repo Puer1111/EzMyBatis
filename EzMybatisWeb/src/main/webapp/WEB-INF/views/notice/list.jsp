@@ -23,16 +23,16 @@ th, td {
 	<table>
 
 		<tr>
-			<th>글번호></th>
-			<th>글제목></th>
-			<th>글쓴이></th>
-			<th>작성일></th>
-			<th>조회수></th>
+			<th>글번호</th>
+			<th>글제목</th>
+			<th>글쓴이</th>
+			<th>작성일</th>
+			<th>조회수</th>
 		</tr>
 		<c:forEach items="${nList }" var="notice">
 			<tr>
 				<td>${notice.noticeNo}</td>
-				<td>${notice.noticeSubject}</td>
+				<td><a href="/notice/detail.kh?noticeNo=${notice.noticeNo }">${notice.noticeSubject}</a></td>
 				<td>${notice.noticeWriter }</td>
 				<td>${notice.regDate }</td>
 				<td>${notice.viewCount }</td>

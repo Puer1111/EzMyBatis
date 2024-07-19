@@ -11,14 +11,21 @@ public class Notice {
 	private Timestamp updateDate;
 	private int viewCount;
 
-	
-	public Notice() {}
-	
+	public Notice() {
+	}
+
 	public Notice(String noticeSubject, String noticeContent, String noticeWriter) {
 		super();
 		this.noticeSubject = noticeSubject;
 		this.noticeContent = noticeContent;
 		this.noticeWriter = noticeWriter;
+	}
+
+	public Notice(int noticeNo, String noticeSubject, String noticeContent) {
+
+		this.noticeNo = noticeNo;
+		this.noticeSubject = noticeSubject;
+		this.noticeContent = noticeContent;
 	}
 
 	public String getNoticeSubject() {
@@ -36,7 +43,6 @@ public class Notice {
 	public void setNoticeContent(String noticeContent) {
 		this.noticeContent = noticeContent;
 	}
-
 
 	public int getNoticeNo() {
 		return noticeNo;
@@ -57,9 +63,6 @@ public class Notice {
 	public void setNoticewriter(String noticeWriter) {
 		this.noticeWriter = noticeWriter;
 	}
-
-
-
 
 	public Timestamp getRegDate() {
 		return regDate;
@@ -95,7 +98,5 @@ public class Notice {
 				+ getViewCount() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
 				+ super.toString() + "]";
 	}
-
-	
 
 }

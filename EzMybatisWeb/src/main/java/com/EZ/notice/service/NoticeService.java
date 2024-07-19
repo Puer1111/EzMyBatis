@@ -27,4 +27,21 @@ public class NoticeService {
 		return nList;
 	}
 
+	public Notice selectOneByNo(int noticeNo) {
+		Notice result = nDao.selectOne(noticeNo,conn);
+		return result;
+	}
+
+
+
+	public int UpdateNotice(Notice notice) {
+		int result = nDao.UpdateNotice(conn, notice);
+		return result;
+	}
+
+	public int deleteNotice(int noticeNo) {
+		int result = nDao.deleteNotice(conn,noticeNo);
+		return result;
+	}
+
 }
